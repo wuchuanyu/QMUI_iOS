@@ -350,6 +350,127 @@
     [self showWithAnimated:animated completion:nil];
 }
 
+- (void)showWithAnimatedInLeft:(BOOL)animated {
+    [self showWithAnimatedInLeft:animated completion:nil];
+}
+
+- (void)showWithAnimatedInMiddle:(BOOL)animated {
+    [self showWithAnimatedInMiddle:animated completion:nil];
+}
+
+- (void)showWithAnimatedInLeft:(BOOL)animated completion:(void (^)(BOOL))completion{
+    BOOL isShowingByWindowMode = NO;
+    if (!self.superview) {
+        [self initPopupContainerViewWindowIfNeeded];
+        
+        QMUICommonViewController *viewController = (QMUICommonViewController *)self.popupWindow.rootViewController;
+        viewController.supportedOrientationMask = [QMUIHelper visibleViewController].supportedInterfaceOrientations;
+        
+        self.previousKeyWindow = [UIApplication sharedApplication].keyWindow;
+        [self.popupWindow makeKeyAndVisible];
+        
+        isShowingByWindowMode = YES;
+    } else {
+        self.hidden = NO;
+    }
+    
+    if (self.willShowBlock) {
+        self.willShowBlock(animated);
+    }
+    
+    if (animated) {
+        if (isShowingByWindowMode) {
+            self.popupWindow.alpha = 0;
+        } else {
+            self.alpha = 0;
+        }
+        
+        self.layer.anchorPoint = CGPointMake(0, 0);
+        self.layer.position = CGPointMake(self.frame.origin.x - self.frame.size.width*0.5 , self.frame.origin.y-self.frame.size.height*0.5);
+        self.transform = CGAffineTransformMakeScale(0.1, 0.1);
+        
+        [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+            if (completion) {
+                completion(finished);
+            }
+        }];
+        
+        [UIView animateWithDuration:0.1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            if (isShowingByWindowMode) {
+                self.popupWindow.alpha = 1;
+            } else {
+                self.alpha = 1;
+            }
+        } completion:nil];
+        
+    } else {
+        if (isShowingByWindowMode) {
+            self.popupWindow.alpha = 1;
+        } else {
+            self.alpha = 1;
+        }
+        if (completion) {
+            completion(YES);
+        }
+    }
+}
+
+- (void)showWithAnimatedInMiddle:(BOOL)animated completion:(void (^)(BOOL))completion{
+    BOOL isShowingByWindowMode = NO;
+    if (!self.superview) {
+        [self initPopupContainerViewWindowIfNeeded];
+        
+        QMUICommonViewController *viewController = (QMUICommonViewController *)self.popupWindow.rootViewController;
+        viewController.supportedOrientationMask = [QMUIHelper visibleViewController].supportedInterfaceOrientations;
+        
+        self.previousKeyWindow = [UIApplication sharedApplication].keyWindow;
+        [self.popupWindow makeKeyAndVisible];
+        
+        isShowingByWindowMode = YES;
+    } else {
+        self.hidden = NO;
+    }
+    
+    if (self.willShowBlock) {
+        self.willShowBlock(animated);
+    }
+    
+    if (animated) {
+        if (isShowingByWindowMode) {
+            self.popupWindow.alpha = 0;
+        } else {
+            self.alpha = 0;
+        }
+        
+        self.layer.transform = CATransform3DMakeScale(0.98, 0.98, 1);
+        [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:12 options:UIViewAnimationOptionCurveLinear animations:^{
+            self.layer.transform = CATransform3DMakeScale(1, 1, 1);
+        } completion:^(BOOL finished) {
+            if (completion) {
+                completion(finished);
+            }
+        }];
+        [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+            if (isShowingByWindowMode) {
+                self.popupWindow.alpha = 1;
+            } else {
+                self.alpha = 1;
+            }
+        } completion:nil];
+    } else {
+        if (isShowingByWindowMode) {
+            self.popupWindow.alpha = 1;
+        } else {
+            self.alpha = 1;
+        }
+        if (completion) {
+            completion(YES);
+        }
+    }
+}
+
 - (void)showWithAnimated:(BOOL)animated completion:(void (^)(BOOL))completion {
     
     BOOL isShowingByWindowMode = NO;
@@ -417,6 +538,29 @@
     
     if (animated) {
         [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+            if (isShowingByWindowMode) {
+                self.popupWindow.alpha = 0;
+            } else {
+                self.alpha = 0;
+            }
+        } completion:^(BOOL finished) {
+            [self hideCompletionWithWindowMode:isShowingByWindowMode completion:completion];
+        }];
+    } else {
+        [self hideCompletionWithWindowMode:isShowingByWindowMode completion:completion];
+    }
+}
+
+- (void)hideWithAnimated:(BOOL)animated duration:(NSInteger)duration completion:(void (^)(BOOL))completion {
+    if (self.willHideBlock) {
+        self.willHideBlock(self.hidesByUserTap, animated);
+    }
+    
+    BOOL isShowingByWindowMode = !!self.popupWindow;
+    
+    if (animated) {
+        [UIView animateWithDuration:duration animations:^{
+            self.transform = CGAffineTransformMakeScale(0.1, 0.1);
             if (isShowingByWindowMode) {
                 self.popupWindow.alpha = 0;
             } else {
