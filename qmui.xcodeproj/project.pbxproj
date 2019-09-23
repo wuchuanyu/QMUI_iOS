@@ -11,6 +11,7 @@
 		1178D56A2198258700AA30E5 /* NSURL+QMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1178D5682198258700AA30E5 /* NSURL+QMUI.m */; };
 		AA8860BA2107455C005E4054 /* QMUIWeakObjectContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = AA8860B82107455C005E4054 /* QMUIWeakObjectContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AA8860BB2107455C005E4054 /* QMUIWeakObjectContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8860B92107455C005E4054 /* QMUIWeakObjectContainer.m */; };
+		C425B54A2338664000119CCA /* QMUILab.h in Headers */ = {isa = PBXBuildFile; fileRef = C425B5492338664000119CCA /* QMUILab.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD046C412018668900092035 /* QMUILogItem.h in Headers */ = {isa = PBXBuildFile; fileRef = CD046C3F2018668900092035 /* QMUILogItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CD046C422018668900092035 /* QMUILogItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CD046C402018668900092035 /* QMUILogItem.m */; };
 		CD046C452018670900092035 /* QMUILogNameManager.h in Headers */ = {isa = PBXBuildFile; fileRef = CD046C432018670900092035 /* QMUILogNameManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -265,6 +266,7 @@
 		6D03A56D1B53895D003BDDE4 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		AA8860B82107455C005E4054 /* QMUIWeakObjectContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QMUIWeakObjectContainer.h; sourceTree = "<group>"; };
 		AA8860B92107455C005E4054 /* QMUIWeakObjectContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QMUIWeakObjectContainer.m; sourceTree = "<group>"; };
+		C425B5492338664000119CCA /* QMUILab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMUILab.h; sourceTree = "<group>"; };
 		CD046C3F2018668900092035 /* QMUILogItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QMUILogItem.h; sourceTree = "<group>"; };
 		CD046C402018668900092035 /* QMUILogItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QMUILogItem.m; sourceTree = "<group>"; };
 		CD046C432018670900092035 /* QMUILogNameManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QMUILogNameManager.h; sourceTree = "<group>"; };
@@ -952,6 +954,7 @@
 				CDC86FB31F68D5F9000E8829 /* QMUIHelper.m */,
 				CDD7C0D3212300A000D6FA1E /* QMUIRuntime.h */,
 				CD979995213F934700C00FDC /* QMUIRuntime.m */,
+				C425B5492338664000119CCA /* QMUILab.h */,
 			);
 			path = QMUICore;
 			sourceTree = "<group>";
@@ -1118,6 +1121,7 @@
 				CDC86FF51F68D617000E8829 /* QMUIHelper.h in Headers */,
 				CDC86FF61F68D617000E8829 /* QMUICommonTableViewController.h in Headers */,
 				CDC86FF71F68D617000E8829 /* QMUICommonViewController.h in Headers */,
+				C425B54A2338664000119CCA /* QMUILab.h in Headers */,
 				CDC86FF81F68D617000E8829 /* QMUINavigationController.h in Headers */,
 				CDC86FF91F68D617000E8829 /* QMUITabBarViewController.h in Headers */,
 				CDEA6D081F4B07E700F627AF /* UIGestureRecognizer+QMUI.h in Headers */,
@@ -1186,6 +1190,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				"zh-Hant",

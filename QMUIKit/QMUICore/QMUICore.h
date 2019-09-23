@@ -16,5 +16,6 @@
 #import "QMUIHelper.h"
 #import "QMUICommonDefines.h"
 #import "QMUIRuntime.h"
+#import "QMUILab.h"
 #import "QMUIConfiguration.h"
 #import "QMUIConfigurationMacros.h"

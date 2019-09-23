@@ -195,6 +195,10 @@ static NSString * const QMUI_VERSION = @"2.9.3";
 #import "QMUIKeyboardManager.h"
 #endif
 
+#if __has_include("QMUILab.h")
+#import "QMUILab.h"
+#endif
+
 #if __has_include("QMUILabel.h")
 #import "QMUILabel.h"
 #endif
