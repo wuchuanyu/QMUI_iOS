@@ -16,7 +16,8 @@ Pod::Spec.new do |s|
   s.screenshot       = 'https://cloud.githubusercontent.com/assets/1190261/26751376/63f96538-486a-11e7-81cf-5bc83a945207.png'
 
   s.platform         = :ios, '8.0'
-  s.frameworks       = 'Foundation', 'UIKit', 'CoreGraphics', 'Photos'
+  s.frameworks       = 'Foundation', 'UIKit', 'CoreGraphics'
+  s.weak_frameworks  = 'Photos'
   s.preserve_paths   = 'QMUIConfigurationTemplate/*'
   s.source_files     = 'QMUIKit/QMUIKit.h'
 
