@@ -147,7 +147,11 @@ static QMUIMoreOperationController *moreOperationViewControllerAppearance;
         self.mutableItems = [[NSMutableArray alloc] init];
     }
     
-    [self loadViewIfNeeded];
+    if (@available(iOS 9.0, *)) {
+        [self loadViewIfNeeded];
+    } else {
+        // Fallback on earlier versions
+    }
 }
 
 - (void)viewDidLoad {

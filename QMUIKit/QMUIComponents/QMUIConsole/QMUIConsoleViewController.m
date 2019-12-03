@@ -84,7 +84,11 @@
     self.selectedLevels = [[NSMutableArray alloc] init];
     self.selectedNames = [[NSMutableArray alloc] init];
     
-    [self loadViewIfNeeded];
+    if (@available(iOS 9.0, *)) {
+        [self loadViewIfNeeded];
+    } else {
+        // Fallback on earlier versions
+    }
 }
 
 - (void)initSubviews {

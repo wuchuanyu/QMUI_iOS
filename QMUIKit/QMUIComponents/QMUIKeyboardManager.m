@@ -412,8 +412,12 @@ static char kAssociatedObjectKey_KeyboardViewFrameObserver;
     if ([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
         return NO;
     }
-    if (![[notification.userInfo valueForKey:UIKeyboardIsLocalUserInfoKey] boolValue]) {
-        return NO;
+    if (@available(iOS 9.0, *)) {
+        if (![[notification.userInfo valueForKey:UIKeyboardIsLocalUserInfoKey] boolValue]) {
+            return NO;
+        }
+    } else {
+        // Fallback on earlier versions
     }
     return YES;
 }

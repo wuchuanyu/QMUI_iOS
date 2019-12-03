@@ -143,7 +143,11 @@ BeginIgnoreDeprecatedWarning
 - (void)viewDidLoad {
     [super viewDidLoad];
     // 主动触发 loadView，如果不这么做，那么有可能直到 QMUISearchController 被销毁，这期间 self.searchController 都没有被触发 loadView，然后在 dealloc 时就会报错，提示尝试在释放 self.searchController 时触发了 self.searchController 的 loadView
-    [self.searchController loadViewIfNeeded];
+    if (@available(iOS 9.0, *)) {
+        [self.searchController loadViewIfNeeded];
+    } else {
+        // Fallback on earlier versions
+    }
 }
 
 - (void)setSearchResultsDelegate:(id<QMUISearchControllerDelegate>)searchResultsDelegate {

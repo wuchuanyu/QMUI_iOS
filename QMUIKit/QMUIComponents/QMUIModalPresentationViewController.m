@@ -531,7 +531,11 @@ static QMUIModalPresentationViewController *appearance;
 
 - (void)showInView:(UIView *)view animated:(BOOL)animated completion:(void (^)(BOOL))completion {
     self.appearCompletionBlock = completion;
-    [self loadViewIfNeeded];
+    if (@available(iOS 9.0, *)) {
+        [self loadViewIfNeeded];
+    } else {
+        // Fallback on earlier versions
+    }
     [self beginAppearanceTransition:YES animated:animated];
     [view addSubview:self.view];
     [self endAppearanceTransition];

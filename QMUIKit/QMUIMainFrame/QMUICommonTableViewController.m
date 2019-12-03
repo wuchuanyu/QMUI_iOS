@@ -144,7 +144,11 @@ NSString *const QMUICommonTableViewControllerSectionFooterIdentifier = @"QMUISec
 
 - (QMUITableView *)tableView {
     if (!_tableView) {
-        [self loadViewIfNeeded];
+        if (@available(iOS 9.0, *)) {
+            [self loadViewIfNeeded];
+        } else {
+            // Fallback on earlier versions
+        }
     }
     return _tableView;
 }
