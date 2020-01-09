@@ -469,7 +469,7 @@ static QMUIModalPresentationViewController *appearance;
     self.appearCompletionBlock = completion;
     self.previousKeyWindow = [UIApplication sharedApplication].keyWindow;
     if (!self.containerWindow) {
-        self.containerWindow = [[QMUIModalPresentationWindow alloc] init];
+        self.containerWindow = [[QMUIModalPresentationWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         if (@available(iOS 10, *)) {
             self.containerWindow.qmui_capturesStatusBarAppearance = NO;// modalPrensetationViewController.contentViewController 默认无权管理状态栏的样式，如需修改状态栏，请业务自己将这个属性改为 YES
         }
